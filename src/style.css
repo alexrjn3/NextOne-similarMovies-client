@@ -1,0 +1,395 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../dist/wallpaper_app.1516e0db.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(6px) brightness(0.5); /* 👈 blur + dim brightness */
+  transform: scale(1.1);
+  transform-origin: center center;
+  z-index: -1; /* Sit behind all content */
+  pointer-events: none;
+}
+
+body.no-bg::before {
+  background-image: none;
+  filter: none;
+}
+
+/* LOGIN */
+.home-page {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: 60vh;
+}
+
+.login-form {
+  display: flex;
+  height: 70%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message-search,
+.similar-error-msg,
+.director-error-msg,
+.actor-error-msg {
+  height: 30%;
+  color: white;
+}
+
+.search-movie {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border: 0px;
+  border-bottom: 2px solid #ccc;
+  width: 400px;
+  max-width: 80%;
+  background-color: white;
+}
+
+.btn-search-movie {
+  color: grey;
+  font-size: 1rem;
+  width: 30px;
+  height: 35px;
+  background-color: white;
+
+  border: 0px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.btn-search-movie:hover {
+  color: black;
+}
+
+.search-movie:hover,
+.btn-search-movie:hover {
+  opacity: 0.7;
+}
+
+.results-box {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 400px;
+  max-width: 80%;
+  position: absolute;
+  top: 100%;
+}
+
+.results-box .suggestion {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.suggestion:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
+.box-cautare {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/*PAGINA REZULTAT*/
+
+.movie-result {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+}
+
+.movie-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: #ebecef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poster-container {
+  position: relative;
+  display: inline-block;
+}
+
+.poster {
+  display: block;
+  height: 100%;
+}
+
+/* Overlay semi-transparent */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* negru cu opacitate 40% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+/* Iconiță din fontawesome sau altceva */
+.icon {
+  color: white;
+  font-size: 2rem;
+  align-self: center;
+}
+
+.paragraph-poster {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 1.1rem;
+}
+
+/* Apare doar când mouse-ul e deasupra imaginii */
+.poster-container:hover .overlay {
+  opacity: 1;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  padding-bottom: 1.2rem;
+}
+
+.movie-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(83, 53, 74); /* Black overlay with 50% opacity */
+  z-index: 1; /* Make sure the overlay is above the background */
+}
+
+.movie-info .content {
+  position: relative;
+  z-index: 2; /* Ensure that the content is above the overlay */
+  color: white; /* Adjust text color for visibility */
+  background-color: transparent;
+  letter-spacing: 0.8;
+  padding-bottom: 0.3rem;
+}
+
+.movie-info h2 {
+  margin: 0 0 40px 20px; /* space below the title */
+}
+
+.movie-info p {
+  margin: 0 5px 5px 20px; /* small space between the p elements */
+}
+
+.movie-info p strong {
+}
+
+/*Recomending movies based on the idea*/
+
+.rec-for-idea,
+.rec-for-plot,
+.rec-for-actors {
+  height: 35vh;
+  width: 100%;
+  padding-bottom: 8rem;
+  background-color: #2b2e4a;
+  letter-spacing: 0.8;
+}
+
+.rec-idea-title,
+.rec-plot-title,
+.rec-actors-title {
+  word-spacing: -0.5px;
+  padding: 2rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.idea-movies-card,
+.plot-movies-card,
+.actors-movies-card {
+  height: 100%;
+  width: 100%;
+  background-color: #2b2e4a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.idea-movies-card-item,
+.actors-movies-card-item {
+  height: 90%;
+  width: 13%;
+  background-color: #2b2e4a;
+  border-radius: 5px;
+}
+
+.plot-movies-card-item {
+  height: 90%;
+  width: 13%;
+  background-color: #2b2e4a;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.score-paragraph-similar {
+  padding-top: 1.1rem;
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+}
+
+.idea-movies-card-item img,
+.plot-movies-card-item img,
+.actors-movies-card-item img {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px; /* optional: make corners slightly rounded */
+}
+
+h3 {
+  margin-left: 2rem;
+}
+
+.actors-title {
+  display: flex;
+  align-items: center;
+}
+
+.actorSelect {
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: #53354a;
+  letter-spacing: 0.8;
+  cursor: pointer;
+}
+
+/* NAVBAR*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #53354a;
+}
+
+.title-app {
+  cursor: pointer;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  margin-right: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: thin;
+}
+
+.in-navbar {
+  z-index: 3;
+}
+
+/*HIDDEN ALWAYS LAST */
+.hidden {
+  display: none;
+}
+
+/* LOADING PLOT*/
+
+.loading-similar {
+  color: white;
+}
+
+/* MOVIES POSTER FROM SEARCH PAGE*/
+.movie-poster {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.movie-poster:hover {
+  transform: scale(1.05);
+}
+
+/* HIDE UBTTON VOTE AVERAGE */
+
+#voteValue {
+  margin-left: 8px;
+  font-weight: bold;
+  display: none;
+}
+
+#toggleVoteBtn {
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 0.2rem 1rem;
+  background-color: #e84545;
+  color: white;
+  letter-spacing: 0.1rem;
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
+
+#toggleVoteBtn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

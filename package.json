@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@huggingface/transformers": "^3.5.0",
+    "@tuesdaycrowd/sentence-transformers": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "mongoose": "^8.14.2",
+    "natural": "^8.0.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.14.4",
+    "parcel-bundler": "^1.12.5"
+  },
+  "name": "app",
+  "version": "1.0.0",
+  "default": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel index.html"
+  },
+  "keywords": [],
+  "author": "Rujan Alex",
+  "license": "ISC",
+  "description": "An app where you search for your next movie to watch based on the previous one or the ones you liked"
+}
