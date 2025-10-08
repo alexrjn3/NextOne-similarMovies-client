@@ -1,10 +1,10 @@
-import { cautaFilm } from "./controllerCautaFilm/cautaFilm.js";
-import { schimbaActor } from "./controllerSchimbaActor/schimbaActor.js";
+import { cautaFilm } from "./src/controllerCautaFilm/cautaFilm.js";
+import { schimbaActor } from "./src/controllerSchimbaActor/schimbaActor.js";
 import {
   liveSearch,
   liveSearchSelect,
-} from "./controllerLiveSearch/liveSearch.js";
-import { playTrailer } from "./controllerPlayTrailer/controllerPlayTrailer.js";
+} from "./src/controllerLiveSearch/liveSearch.js";
+import { playTrailer } from "./src/controllerPlayTrailer/controllerPlayTrailer.js";
 
 //elemente html
 const movie_btn = document.querySelector(".btn-search-movie");
