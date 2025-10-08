@@ -255,9 +255,9 @@ const unhideCards = function () {
 const submitMovie = async function () {
   if (stare.query) {
     // Construct the URL with the movie name
-    const url = `http://127.0.0.1:3000/api/v1/movies/similarity/${encodeURIComponent(
-      stare.movie.id
-    )}`;
+    const url = `${
+      process.env.PARCEL_PUBLIC_API_URL
+    }/api/v1/movies/similarity/${encodeURIComponent(stare.movie.id)}`;
 
     try {
       // Use fetch to send the GET request to the server
