@@ -1,7 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
-
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.PARCEL_PUBLIC_API_KEY;
 
 export const options = {
   method: "GET",
